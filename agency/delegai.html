@@ -504,7 +504,24 @@ footer .links{display:flex;justify-content:center;gap:24px;margin-bottom:8px}
 </div>
 
 <script>
+// API endpoint — próbuje tunel, potem localhost
 const API = 'https://alternatives-town-solid-prepaid.trycloudflare.com/api';
+const API_FALLBACK = 'http://127.0.0.1:9091/api';
+async function apiPost(endpoint, data) {
+  const url = API + endpoint;
+  try {
+    const r = await fetch(url, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),signal:AbortSignal.timeout(8000)});
+    if (!r.ok) throw new Error(r.status);
+    return await r.json();
+  } catch(e) {
+    try {
+      const r = await fetch(API_FALLBACK + endpoint, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),signal:AbortSignal.timeout(5000)});
+      return await r.json();
+    } catch(e2) {
+      return {error:'Brak połączenia',fallback:true};
+    }
+  }
+}
 
 let chatCnt = 0;
 let chatHist = [];
@@ -530,24 +547,18 @@ function startDemo() {
   askAI(prompt);
 }
 
-function askAI(msg) {
+async function askAI(msg) {
   chatHist.push({role:'user',content:msg});
   const d = $('chatMessages');
   d.innerHTML += '<div class="ch-msg u"><b>Ty:</b> ' + msg + '</div>';
   d.scrollTop = d.scrollHeight;
   chatCnt++;
   $('chatCnt').textContent = '🆓 ' + chatCnt + ' / 15';
-  fetch(API + '/chat', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg,history:chatHist})})
-    .then(r => r.json())
-    .then(data => {
-      const r = data.response || 'Przepraszam, spróbuj ponownie.';
-      chatHist.push({role:'assistant',content:r});
-      d.innerHTML += '<div class="ch-msg a"><b>DelegAI:</b> ' + r + '</div>';
-      d.scrollTop = d.scrollHeight;
-    })
-    .catch(e => {
-      d.innerHTML += '<div class="ch-msg a" style="color:var(--er)">Przepraszam, wystąpił błąd. Spróbuj ponownie.</div>';
-    });
+  const data = await apiPost('/chat', {message:msg,history:chatHist});
+  const r = data.response || 'Przepraszam, spróbuj ponownie.';
+  chatHist.push({role:'assistant',content:r});
+  d.innerHTML += '<div class="ch-msg a"><b>DelegAI:</b> ' + r + '</div>';
+  d.scrollTop = d.scrollHeight;
 }
 
 function sendMsg() {
@@ -570,30 +581,27 @@ function showAuth(mode, plan) {
   if (plan) $('authPlan').value = plan;
 }
 
-function submitAuth() {
+async function submitAuth() {
   const mode = $('authMode').value;
   const name = $('authName').value;
   const email = $('authEmail').value;
   const pass = $('authPass').value;
   const plan = $('authPlan').value;
 
-  const ep = mode === 'login' ? API + '/login' : API + '/register';
+  const ep = mode === 'login' ? '/login' : '/register';
   const body = mode === 'login' ? {email,password:pass} : {name,email,password:pass,plan};
 
-  fetch(ep, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-    .then(r => r.json())
-    .then(d => {
-      if (d.success) {
-        $('authMsg').textContent = d.message;
-        $('authMsg').style.display = 'block';
-        $('authMsg').style.color = 'var(--s)';
-      } else {
-        $('authMsg').textContent = d.error || 'Błąd';
-        $('authMsg').style.display = 'block';
-        $('authMsg').style.color = '#ef4444';
-      }
-    });
+  const d = await apiPost(ep, body);
+  if (d.success) {
+    $('authMsg').textContent = d.message;
+    $('authMsg').style.display = 'block';
+    $('authMsg').style.color = 'var(--s)';
+  } else {
+    $('authMsg').textContent = d.error || 'Błąd';
+    $('authMsg').style.display = 'block';
+  }
 }
+
 </script>
 </body>
 </html>
