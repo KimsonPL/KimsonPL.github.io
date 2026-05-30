@@ -505,7 +505,10 @@ footer .links{display:flex;justify-content:center;gap:24px;margin-bottom:8px}
 
 <script>
 // API endpoint — próbuje tunel, potem localhost
-const API = 'https://cinema-exam-allow-hans.trycloudflare.com/api';
+// API endpoint — auto-detekcja hosta
+const API = location.hostname.includes('github') 
+  ? 'https://jean-sticks-nights-write.trycloudflare.com/api'
+  : '/agency/api';
 const API_FALLBACK = 'http://127.0.0.1:9091/api';
 async function apiPost(endpoint, data) {
   const url = API + endpoint;
