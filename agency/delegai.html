@@ -500,3 +500,100 @@ footer .links{display:flex;justify-content:center;gap:24px;margin-bottom:8px}
     </div>
   </div>
 
+</div>
+</div>
+
+<script>
+const API = 'https://alternatives-town-solid-prepaid.trycloudflare.com/api';
+
+let chatCnt = 0;
+let chatHist = [];
+let userData = null;
+let token = null;
+
+function $(id) { return document.getElementById(id); }
+
+function showAuth(mode, plan) {
+  $('landingContent').style.display = mode === 'chat' ? 'none' : 'none';
+  $('authPanel').style.display = 'flex';
+}
+
+function startDemo() {
+  const branch = $('obranch')?.value || 'it';
+  const services = $('oservices')?.value || '';
+  const problems = $('oproblems')?.value || '';
+  const prompt = 'Branża: ' + branch + '. Usługi: ' + services + '. Problemy: ' + problems;
+  chatHist = [{role:'system',content:'Jesteś sales agentem DelegAI. Polski.'}];
+  chatHist.push({role:'user',content:prompt});
+  $('onboardPanel').style.display = 'none';
+  $('chatPanel').style.display = 'flex';
+  askAI(prompt);
+}
+
+function askAI(msg) {
+  chatHist.push({role:'user',content:msg});
+  const d = $('chatMessages');
+  d.innerHTML += '<div class="ch-msg u"><b>Ty:</b> ' + msg + '</div>';
+  d.scrollTop = d.scrollHeight;
+  chatCnt++;
+  $('chatCnt').textContent = '🆓 ' + chatCnt + ' / 15';
+  fetch(API + '/chat', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg,history:chatHist})})
+    .then(r => r.json())
+    .then(data => {
+      const r = data.response || 'Przepraszam, spróbuj ponownie.';
+      chatHist.push({role:'assistant',content:r});
+      d.innerHTML += '<div class="ch-msg a"><b>DelegAI:</b> ' + r + '</div>';
+      d.scrollTop = d.scrollHeight;
+    })
+    .catch(e => {
+      d.innerHTML += '<div class="ch-msg a" style="color:var(--er)">Przepraszam, wystąpił błąd. Spróbuj ponownie.</div>';
+    });
+}
+
+function sendMsg() {
+  const inp = $('chatInput');
+  if (!inp.value.trim()) return;
+  if (chatCnt >= 15) { $('chatPanel').style.display = 'none'; $('chatBlocked').style.display = 'flex'; return; }
+  askAI(inp.value);
+  inp.value = '';
+}
+
+function qMsg(t) { $('chatInput').value = t; sendMsg(); }
+
+function showAuth(mode, plan) {
+  $('landingContent').style.display = 'none';
+  $('authPanel').style.display = 'flex';
+  $('authTitle').textContent = mode === 'login' ? 'Zaloguj się' : 'Założ konto';
+  $('authBtn').textContent = mode === 'login' ? 'Zaloguj się' : 'Zarejestruj się';
+  $('authToggle').innerHTML = mode === 'login' ? 'Nie masz konta? <a href="javascript:showAuth(\'register\')">Zarejestruj się</a>' : 'Masz już konto? <a href="javascript:showAuth(\'login\')">Zaloguj się</a>';
+  $('authMode').value = mode;
+  if (plan) $('authPlan').value = plan;
+}
+
+function submitAuth() {
+  const mode = $('authMode').value;
+  const name = $('authName').value;
+  const email = $('authEmail').value;
+  const pass = $('authPass').value;
+  const plan = $('authPlan').value;
+
+  const ep = mode === 'login' ? API + '/login' : API + '/register';
+  const body = mode === 'login' ? {email,password:pass} : {name,email,password:pass,plan};
+
+  fetch(ep, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    .then(r => r.json())
+    .then(d => {
+      if (d.success) {
+        $('authMsg').textContent = d.message;
+        $('authMsg').style.display = 'block';
+        $('authMsg').style.color = 'var(--s)';
+      } else {
+        $('authMsg').textContent = d.error || 'Błąd';
+        $('authMsg').style.display = 'block';
+        $('authMsg').style.color = '#ef4444';
+      }
+    });
+}
+</script>
+</body>
+</html>
