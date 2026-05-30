@@ -42,7 +42,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .logo .del{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .logo .ai{background:var(--gr);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
-.nav-links a{font-size:14px;font-weight:500;color:var(--tx2);transition:color .3s;cursor:pointer}
+.nav-links a{font-size:14px;font-weight:500;color:var(--tx2);transition:color .3s;cursor:pointer;white-space:nowrap}
 #navPublic{display:flex;align-items:center;gap:20px}
 #navPublic a:hover{color:#fff}
 .nav-links a:hover{color:#fff}
@@ -94,7 +94,8 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .prc-c{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:36px 28px;position:relative;transition:all .3s;display:flex;flex-direction:column;min-height:100%}
 .prc-c:hover{transform:translateY(-4px);box-shadow:var(--sh-h)}
 .prc-c.pop{border-color:var(--p);box-shadow:0 0 30px rgba(99,102,241,.12)}
-.prc-c .btn{margin-top:auto}
+.prc-c .btn,.prc-c .btn-o{margin-top:auto}
+.prc-c .prc-f{flex:1;margin-bottom:20px}
 .prc-c .btn-o{margin-top:auto}
 .pop-b{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;padding:4px 16px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap}
 .prc-n{font-size:13px;font-weight:600;color:var(--tx2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
@@ -119,7 +120,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .ov-b .sb{font-size:14px;color:var(--tx2);margin-bottom:24px}
 .ov-b .fg{margin-bottom:16px}
 .ov-b label{display:block;font-size:13px;font-weight:600;margin-bottom:4px;color:var(--tx2)}
-.ov-b input,.ov-b select,.ov-b textarea{width:100%;background:var(--sf2);border:1px solid var(--bd);border-radius:10px;padding:12px 16px;color:var(--tx);font-size:14px;outline:none;transition:border-color .3s;font-family:'Inter',sans-serif}
+.ov-b input,.ov-b select,.ov-b textarea{width:100%;background:var(--sf2);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;color:var(--tx);font-size:14px;outline:none;transition:border-color .3s;font-family:'Inter',sans-serif;resize:vertical;min-height:44px;box-sizing:border-box}
 .ov-b input:focus,.ov-b select:focus{border-color:var(--p)}
 .ov-b .btn{width:100%;justify-content:center;padding:14px;font-size:15px}
 .ov-b .sw{margin-top:16px;text-align:center;font-size:14px;color:var(--tx2)}
