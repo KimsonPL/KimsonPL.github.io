@@ -31,7 +31,7 @@ a{color:inherit;text-decoration:none}
 .section-sub{font-size:18px;color:var(--tx2);max-width:600px;margin-bottom:56px}
 .btn{transition:all .3s cubic-bezier(.4,0,.2,1);display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:10px;font-size:15px;font-weight:600;border:none;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif}
 .btn-p{background:var(--g);color:#fff}.btn-p:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,102,241,.3)}
-.btn-o{background:transparent;color:var(--tx);border:1px solid var(--bd)}.btn-o:hover{border-color:var(--p);color:#fff;transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--tx);border:2px solid var(--bd)}.btn-o:hover{border-color:var(--p);color:#fff;transform:translateY(-2px);box-shadow:0 0 0 1px rgba(99,102,241,.2)}
 .card{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:32px;transition:all .3s}.card:hover{box-shadow:var(--sh)}
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,15,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid transparent;transition:all .3s}
@@ -59,19 +59,20 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .hero h1 .grad{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero p{font-size:18px;color:var(--tx2);max-width:500px;margin-bottom:32px;line-height:1.7}
 .hero-btns{display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap}
-.hero-stats{display:flex;gap:40px}
-.hero-stat h3{font-size:32px;font-weight:800;letter-spacing:-1px}
+.hero-stats{display:flex;gap:48px}
+.hero-stat{text-align:left}
+.hero-stat h3{font-size:36px;font-weight:800;letter-spacing:-1px;display:flex;align-items:baseline}
 .hero-stat h3 .acc{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-stat p{font-size:13px;color:var(--tx3);margin-top:2px}
+.hero-stat p{font-size:14px;color:var(--tx2);margin-top:4px;max-width:140px;line-height:1.4}
 .hero-vis{position:relative;display:flex;align-items:center;justify-content:center}
 .hero-glow{width:400px;height:400px;border-radius:50%;background:conic-gradient(from 0deg,var(--p),var(--s),var(--p));animation:spin 10s linear infinite;opacity:.12;filter:blur(80px)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hero-card{position:absolute;background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:24px;width:320px;backdrop-filter:blur(10px)}
 .hero-card-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .hero-card-av{width:40px;height:40px;border-radius:10px;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:700}
-.hero-card-n{font-weight:600;font-size:14px}
-.hero-card-t{font-size:12px;color:var(--tx3)}
-.hero-card-msg{background:var(--sf2);border-radius:12px;padding:14px 16px;font-size:14px;color:#d4d4d8;line-height:1.5}
+.hero-card-n{font-weight:600;font-size:14px;color:#fff}
+.hero-card-t{font-size:12px;color:var(--tx2)}
+.hero-card-msg{background:var(--sf2);border-radius:12px;padding:14px 16px;font-size:14px;color:#e4e4e7;line-height:1.5}
 .hero-card-msg .hl{color:var(--s);font-weight:600}
 /* PROBLEMS */
 .pr{background:#0d0d14}
@@ -81,6 +82,8 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .pr-i{font-size:32px;margin-bottom:12px}
 .pr-c h3{font-size:17px;font-weight:700;margin-bottom:8px}
 .pr-c p{font-size:14px;color:var(--tx2);line-height:1.6}
+/* PROBLEM ICONS SVG */
+.pr-i svg{width:32px;height:32px;display:block}
 /* HOW */
 .hw-g{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .hw-s{text-align:center;padding:32px 20px;background:var(--sf);border:1px solid var(--bd);border-radius:14px;transition:all .3s}
@@ -171,13 +174,13 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 /* FAQ */
 .faq-l{max-width:700px;margin:0 auto}
 .faq-i{border-bottom:1px solid var(--bd)}
-.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;background:none;border:none;color:var(--tx);font-size:17px;font-weight:600;cursor:pointer;text-align:left;gap:16px;font-family:'Inter',sans-serif}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;background:none;border:none;color:var(--tx);font-size:17px;font-weight:600;cursor:pointer;text-align:left;gap:16px;font-family:'Inter',sans-serif;transition:color .2s}
 .faq-q:hover{color:var(--p)}
-.faq-q .ic{font-size:12px;transition:transform .3s;flex-shrink:0;color:var(--tx2)}
-.faq-i.a .faq-q .ic{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:all .4s ease;padding:0}
-.faq-i.a .faq-a{max-height:300px;padding:0 0 20px}
-.faq-a p{font-size:15px;color:var(--tx2);line-height:1.7}
+.faq-q .ic{font-size:20px;font-weight:300;transition:transform .3s cubic-bezier(.4,0,.2,1);flex-shrink:0;color:var(--p);width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:rgba(99,102,241,.08)}
+.faq-i.a .faq-q .ic{transform:rotate(135deg);background:var(--g);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1),padding .3s ease,opacity .3s ease;padding:0;opacity:0}
+.faq-i.a .faq-a{max-height:300px;padding:0 0 24px;opacity:1}
+.faq-a p{font-size:15px;color:var(--tx);line-height:1.7}
 /* CTA */
 .cta{text-align:center;padding:120px 0}
 .cta h2{font-size:48px;font-weight:900;letter-spacing:-1.5px;margin-bottom:16px}
@@ -194,6 +197,8 @@ footer .links{display:flex;justify-content:center;gap:24px;margin-bottom:8px}
 .df{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
 .op{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:32px}
 .op h3{font-size:20px;font-weight:700;margin-bottom:20px}
+.op textarea,.op select,.op input{width:100%;background:var(--sf2);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;color:var(--tx);font-size:14px;outline:none;transition:border-color .3s;font-family:'Inter',sans-serif;resize:vertical;min-height:52px;box-sizing:border-box}
+.op textarea:focus,.op select:focus,.op input:focus{border-color:var(--p)}
 .ch{background:var(--sf);border:1px solid var(--bd);border-radius:16px;overflow:hidden;min-height:400px;display:flex;flex-direction:column}
 .ch-h{display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--sf2);border-bottom:1px solid var(--bd)}
 .ch-av{width:32px;height:32px;border-radius:8px;background:var(--g);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700}
@@ -309,12 +314,12 @@ footer .links{display:flex;justify-content:center;gap:24px;margin-bottom:8px}
   <h2 class="section-title">Codzienne problemy, które rozwiązujemy</h2>
   <p class="section-sub">Powtarzalne zadania zjadają Twój czas. DelegAI przejmuje je wszystkie.</p>
   <div class="pr-g">
-    <div class="pr-c"><div class="pr-i">📝</div><h3>Brak treści na bloga</h3><p>AI pisze 15 artykułów SEO miesięcznie dopasowanych do Twojej branży.</p></div>
-    <div class="pr-c"><div class="pr-i">📧</div><h3>Odpisywanie na maile</h3><p>AI sortuje, kategoryzuje i odpowiada na maile w sekundę.</p></div>
-    <div class="pr-c"><div class="pr-i">🎯</div><h3>Obsługa leadów</h3><p>Każdy lead dostaje odpowiedź 24/7 — żaden nie przepada.</p></div>
-    <div class="pr-c"><div class="pr-i">📊</div><h3>Raporty i faktury</h3><p>Automatyczne generowanie raportów. Zero ręcznej roboty.</p></div>
-    <div class="pr-c"><div class="pr-i">🔔</div><h3>Follow-up AI</h3><p>AI dba o terminowe follow-upy i przypomnienia.</p></div>
-    <div class="pr-c"><div class="pr-i">🌙</div><h3>Obsługa 24/7</h3><p>Twój AI asystent pracuje w weekendy, święta i noce.</p></div>
+    <div class="pr-c"><div class="pr-i"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></div><h3>Brak treści na bloga</h3><p>AI pisze 15 artykułów SEO miesięcznie dopasowanych do Twojej branży.</p></div>
+    <div class="pr-c"><div class="pr-i"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Odpisywanie na maile</h3><p>AI sortuje, kategoryzuje i odpowiada na maile w sekundę.</p></div>
+    <div class="pr-c"><div class="pr-i"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h3>Obsługa leadów</h3><p>Każdy lead dostaje odpowiedź 24/7 — żaden nie przepada.</p></div>
+    <div class="pr-c"><div class="pr-i"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3>Raporty i faktury</h3><p>Automatyczne generowanie raportów. Zero ręcznej roboty.</p></div>
+    <div class="pr-c"><div class="pr-i"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><h3>Follow-up AI</h3><p>AI dba o terminowe follow-upy i przypomnienia.</p></div>
+    <div class="pr-c"><div class="pr-i"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><h3>Obsługa 24/7</h3><p>Twój AI asystent pracuje w weekendy, święta i noce.</p></div>
   </div>
 </div>
 </section>
@@ -499,16 +504,30 @@ footer .links{display:flex;justify-content:center;gap:24px;margin-bottom:8px}
       <button class="btn btn-o" onclick="logout()" style="margin-top:12px;color:#ef4444;border-color:#ef444430">Wyloguj się</button>
     </div>
   </div>
+</div>
+</div>
+</div>
 
+<!-- AUTH OVERLAY -->
+<div class="ov" id="authPanel">
+<div class="ov-b">
+  <button class="ov-x" onclick="closeAuth()">×</button>
+  <h2 id="authTitle">Załóż konto</h2>
+  <p class="sb" id="authSub">7-dniowy trial bez zobowiązań</p>
+  <div class="err" id="authMsg"></div>
+  <input type="hidden" id="authMode" value="register">
+  <input type="hidden" id="authPlan" value="automation">
+  <div class="fg" id="authNameGroup"><label>Imię i nazwisko</label><input type="text" id="authName" placeholder="Jan Kowalski"></div>
+  <div class="fg"><label>Email</label><input type="email" id="authEmail" placeholder="jan@firma.pl"></div>
+  <div class="fg"><label>Hasło (min 6 znaków)</label><input type="password" id="authPass" placeholder="••••••"></div>
+  <button class="btn btn-p" id="authBtn" onclick="submitAuth()" style="width:100%;justify-content:center;margin-top:12px">Zarejestruj się</button>
+  <div class="sw" id="authToggle">Masz już konto? <a href="javascript:showAuth('login')">Zaloguj się</a></div>
 </div>
 </div>
 
 <script>
-// API endpoint — próbuje tunel, potem localhost
-// API endpoint — auto-detekcja hosta
-const API = location.hostname.includes('github') 
-  ? 'https://jean-sticks-nights-write.trycloudflare.com/api'
-  : '/agency/api';
+// API endpoint — Cloudflare quick tunnel do lokalnego serwera
+const API = 'https://spears-bass-surrounded-fan.trycloudflare.com/api';
 const API_FALLBACK = 'http://127.0.0.1:9091/api';
 async function apiPost(endpoint, data) {
   const url = API + endpoint;
@@ -529,81 +548,261 @@ async function apiPost(endpoint, data) {
 let chatCnt = 0;
 let chatHist = [];
 let userData = null;
-let token = null;
+let selectedPlan = 'automation';
 
 function $(id) { return document.getElementById(id); }
 
-function showAuth(mode, plan) {
-  $('landingContent').style.display = mode === 'chat' ? 'none' : 'none';
-  $('authPanel').style.display = 'flex';
+function tF(btn){
+  const item = btn.parentElement;
+  const was = item.classList.contains('a');
+  document.querySelectorAll('.faq-i').forEach(i=>i.classList.remove('a'));
+  if(!was) item.classList.add('a');
 }
 
-function startDemo() {
+function closeAuth(){
+  $('authPanel').style.display = 'none';
+  if(!userData) $('landingContent').style.display = 'block';
+  $('authMsg').className = 'err';
+  $('authMsg').style.display = 'none';
+}
+
+function showAuth(mode, plan){
+  $('authPanel').style.display = 'flex';
+  $('authMode').value = mode;
+  $('authTitle').textContent = mode==='login' ? 'Zaloguj się' : 'Załóż konto';
+  $('authSub').textContent = mode==='login' ? 'Witaj z powrotem' : '7-dniowy trial bez zobowiązań';
+  $('authBtn').textContent = mode==='login' ? 'Zaloguj się' : 'Zarejestruj się';
+  $('authNameGroup').style.display = mode==='login' ? 'none' : 'block';
+  $('authToggle').innerHTML = mode==='login'
+    ? 'Nie masz konta? <a href="javascript:showAuth(\'register\')">Zarejestruj się</a>'
+    : 'Masz już konto? <a href="javascript:showAuth(\'login\')">Zaloguj się</a>';
+  $('authMsg').className = 'err';
+  $('authMsg').style.display = 'none';
+  if(plan) $('authPlan').value = plan;
+}
+
+function showDashboard(){
+  $('landingContent').style.display = 'none';
+  $('dashboard').classList.add('s');
+  $('authPanel').style.display = 'none';
+  $('navPublic').style.display = 'none';
+  $('navUser').style.display = 'flex';
+  if(userData){
+    $('navName').textContent = userData.name || 'Panel';
+    $('navAvatar').textContent = (userData.name || 'U').charAt(0).toUpperCase();
+  }
+  loadDashboard();
+}
+
+function logout(){
+  userData = null;
+  localStorage.removeItem('delegai_user');
+  $('dashboard').classList.remove('s');
+  $('landingContent').style.display = 'block';
+  $('navPublic').style.display = 'flex';
+  $('navUser').style.display = 'none';
+  $('authPanel').style.display = 'none';
+}
+
+function startDemo(){
   const branch = $('obranch')?.value || 'it';
   const services = $('oservices')?.value || '';
   const problems = $('oproblems')?.value || '';
   const prompt = 'Branża: ' + branch + '. Usługi: ' + services + '. Problemy: ' + problems;
   chatHist = [{role:'system',content:'Jesteś sales agentem DelegAI. Polski.'}];
-  chatHist.push({role:'user',content:prompt});
   $('onboardPanel').style.display = 'none';
   $('chatPanel').style.display = 'flex';
+  $('chatCnt').textContent = '🆓 ' + chatCnt + ' / 15';
   askAI(prompt);
 }
 
-async function askAI(msg) {
-  chatHist.push({role:'user',content:msg});
+function addMsg(who, text, cls){
   const d = $('chatMessages');
-  d.innerHTML += '<div class="ch-msg u"><b>Ty:</b> ' + msg + '</div>';
-  d.scrollTop = d.scrollHeight;
-  chatCnt++;
-  $('chatCnt').textContent = '🆓 ' + chatCnt + ' / 15';
-  const data = await apiPost('/chat', {message:msg,history:chatHist});
-  const r = data.response || 'Przepraszam, spróbuj ponownie.';
-  chatHist.push({role:'assistant',content:r});
-  d.innerHTML += '<div class="ch-msg a"><b>DelegAI:</b> ' + r + '</div>';
+  const div = document.createElement('div');
+  div.className = 'ch-msg ' + cls;
+  div.innerHTML = '<div class="ch-b"><strong>' + who + ':</strong> ' + escapeHtml(text) + '</div>';
+  d.appendChild(div);
   d.scrollTop = d.scrollHeight;
 }
 
-function sendMsg() {
+function escapeHtml(text){
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+async function askAI(msg){
+  addMsg('Ty', msg, 'u');
+  chatCnt++;
+  $('chatCnt').textContent = '🆓 ' + chatCnt + ' / 15';
+  if(chatCnt >= 15){
+    $('chatInputWrap').style.display = 'none';
+    $('chatQuick').style.display = 'none';
+    $('chatBlocked').style.display = 'flex';
+  }
+  chatHist.push({role:'user',content:msg});
+  const data = await apiPost('/chat', {message:msg,history:chatHist});
+  const r = data.response || 'Przepraszam, spróbuj ponownie.';
+  chatHist.push({role:'assistant',content:r});
+  addMsg('DelegAI', r, 'b');
+  if(userData && userData.email){
+    userData.stats = userData.stats || {};
+    userData.stats.chat_messages = (userData.stats.chat_messages || 0) + 1;
+    localStorage.setItem('delegai_user', JSON.stringify(userData));
+  }
+}
+
+function sendMsg(){
   const inp = $('chatInput');
-  if (!inp.value.trim()) return;
-  if (chatCnt >= 15) { $('chatPanel').style.display = 'none'; $('chatBlocked').style.display = 'flex'; return; }
+  if(!inp.value.trim()) return;
+  if(chatCnt >= 15) return;
   askAI(inp.value);
   inp.value = '';
 }
 
-function qMsg(t) { $('chatInput').value = t; sendMsg(); }
+function qMsg(t){ $('chatInput').value = t; sendMsg(); }
 
-function showAuth(mode, plan) {
-  $('landingContent').style.display = 'none';
-  $('authPanel').style.display = 'flex';
-  $('authTitle').textContent = mode === 'login' ? 'Zaloguj się' : 'Założ konto';
-  $('authBtn').textContent = mode === 'login' ? 'Zaloguj się' : 'Zarejestruj się';
-  $('authToggle').innerHTML = mode === 'login' ? 'Nie masz konta? <a href="javascript:showAuth(\'register\')">Zarejestruj się</a>' : 'Masz już konto? <a href="javascript:showAuth(\'login\')">Zaloguj się</a>';
-  $('authMode').value = mode;
-  if (plan) $('authPlan').value = plan;
-}
-
-async function submitAuth() {
+async function submitAuth(){
   const mode = $('authMode').value;
-  const name = $('authName').value;
-  const email = $('authEmail').value;
+  const name = $('authName').value.trim();
+  const email = $('authEmail').value.trim().toLowerCase();
   const pass = $('authPass').value;
   const plan = $('authPlan').value;
 
-  const ep = mode === 'login' ? '/login' : '/register';
-  const body = mode === 'login' ? {email,password:pass} : {name,email,password:pass,plan};
+  if(!email || !pass || pass.length<6){
+    $('authMsg').textContent = 'Email i hasło (min 6 znaków) wymagane';
+    $('authMsg').className = 'err s';
+    return;
+  }
+  if(mode==='register' && !name){
+    $('authMsg').textContent = 'Podaj imię i nazwisko';
+    $('authMsg').className = 'err s';
+    return;
+  }
+
+  const ep = mode==='login' ? '/login' : '/register';
+  const body = mode==='login' ? {email,password:pass} : {name,email,password:pass,plan};
 
   const d = await apiPost(ep, body);
-  if (d.success) {
-    $('authMsg').textContent = d.message;
-    $('authMsg').style.display = 'block';
-    $('authMsg').style.color = 'var(--s)';
+  if(d.success){
+    userData = { email, name: d.name || name, plan: d.plan || plan, status: d.status, trial_end: d.trial_end, days_left: d.days_left, stats: {chat_messages:0,seo_articles:0,leads:0} };
+    localStorage.setItem('delegai_user', JSON.stringify(userData));
+    showDashboard();
   } else {
-    $('authMsg').textContent = d.error || 'Błąd';
-    $('authMsg').style.display = 'block';
+    $('authMsg').textContent = d.error || 'Błąd logowania/rejestracji';
+    $('authMsg').className = 'err s';
   }
 }
+
+async function loadDashboard(){
+  if(!userData) return;
+  $('dbName').textContent = userData.name || userData.email;
+  $('dbPlanBadge').textContent = (userData.plan || 'automation').toUpperCase();
+  $('dbTrialDays').textContent = userData.days_left || 7;
+  $('dbStatusText').textContent = userData.status === 'trial' ? 'Trial aktywny' : (userData.status || 'Aktywny');
+  $('dbStatusBadge').querySelector('.dot').style.background = userData.status === 'trial' ? '#10b981' : '#6366f1';
+
+  const usage = await apiPost('/usage', {email:userData.email});
+  if(usage.success){
+    const s = usage.stats;
+    $('statChat').textContent = s.chat_messages_used;
+    $('statChatSub').textContent = 'limit: ' + (s.chat_messages_limit === 999999 ? '∞' : s.chat_messages_limit) + '/miesiąc';
+    $('barChat').style.width = Math.min(100, (s.chat_messages_used / (s.chat_messages_limit || 1)) * 100) + '%';
+
+    $('statSEO').textContent = s.seo_articles_used;
+    $('statSEOsub').textContent = 'limit: ' + s.seo_articles_limit + '/miesiąc';
+    $('barSEO').style.width = Math.min(100, (s.seo_articles_used / (s.seo_articles_limit || 1)) * 100) + '%';
+
+    $('statLeads').textContent = s.leads_captured;
+    $('barLeads').style.width = Math.min(100, s.leads_captured * 10) + '%';
+  }
+
+  $('sName').value = userData.name || '';
+  $('sEmail').value = userData.email || '';
+  $('sCompany').value = userData.company || '';
+  $('sPhone').value = userData.phone || '';
+
+  updatePlanUI(userData.plan || 'automation');
+  $('billingStatus').textContent = userData.status === 'trial' ? 'Trial' : (userData.status || 'Aktywny');
+  $('billingTrialEnd').textContent = userData.trial_end ? new Date(userData.trial_end).toLocaleDateString('pl-PL') : '—';
+}
+
+async function saveSettings(){
+  if(!userData) return;
+  const name = $('sName').value.trim();
+  const company = $('sCompany').value.trim();
+  const phone = $('sPhone').value.trim();
+  const newPass = $('sPassword').value;
+  const body = {email:userData.email, name, company, phone};
+  if(newPass) body.new_password = newPass;
+  const d = await apiPost('/update_settings', body);
+  if(d.success){
+    userData.name = name;
+    userData.company = company;
+    userData.phone = phone;
+    localStorage.setItem('delegai_user', JSON.stringify(userData));
+    $('settingsMsg').style.display = 'block';
+    setTimeout(()=>$('settingsMsg').style.display='none', 3000);
+  } else {
+    alert(d.error || 'Błąd zapisu');
+  }
+}
+
+function updatePlanUI(plan){
+  selectedPlan = plan;
+  document.querySelectorAll('.db-plan-card').forEach(c=>c.classList.remove('s'));
+  const el = document.getElementById('planDot' + plan.charAt(0).toUpperCase() + plan.slice(1))?.parentElement;
+  if(el) el.classList.add('s');
+  ['Content','Automation','Max'].forEach(p=>{
+    const dot = $('planDot' + p);
+    if(dot) dot.style.display = (p.toLowerCase()===plan) ? 'block' : 'none';
+  });
+}
+
+function selectPlanUI(plan, el){
+  selectedPlan = plan;
+  document.querySelectorAll('.db-plan-card').forEach(c=>c.classList.remove('s'));
+  el.classList.add('s');
+}
+
+async function changePlan(){
+  if(!userData) return;
+  const d = await apiPost('/change_plan', {email:userData.email, plan:selectedPlan});
+  if(d.success){
+    userData.plan = selectedPlan;
+    localStorage.setItem('delegai_user', JSON.stringify(userData));
+    $('planMsg').textContent = d.message;
+    $('planMsg').style.display = 'block';
+    $('dbPlanBadge').textContent = selectedPlan.toUpperCase();
+    setTimeout(()=>$('planMsg').style.display='none', 3000);
+  } else {
+    $('planMsg').textContent = d.error || 'Błąd';
+    $('planMsg').style.color = '#ef4444';
+    $('planMsg').style.display = 'block';
+  }
+}
+
+function switchTab(tab, btn){
+  document.querySelectorAll('.db-panel').forEach(p=>p.classList.remove('s'));
+  document.querySelectorAll('.db-card-tab').forEach(t=>t.classList.remove('s'));
+  $('panel' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('s');
+  if(btn) btn.classList.add('s');
+}
+
+function copyWidgetCode(){
+  const code = $('widgetCode').textContent;
+  navigator.clipboard.writeText(code).then(()=>{
+    $('copyWidgetBtn').textContent = 'Skopiowano!';
+    setTimeout(()=>$('copyWidgetBtn').textContent='Kopiuj kod', 2000);
+  });
+}
+
+window.addEventListener('load', ()=>{
+  try{
+    const stored = localStorage.getItem('delegai_user');
+    if(stored){ userData = JSON.parse(stored); showDashboard(); }
+  }catch(e){}
+});
 
 </script>
 </body>
